@@ -17,12 +17,22 @@ from utils.whisper_model import load_whisper_model, transcribe_audio
 from utils.ollama_feedback import ollama_feedback
 from utils.tts_model import load_tts_model, tts_speak
 import sys
+import tomli as tomllib
+from pathlib import Path
+
 sys.stdout.reconfigure(encoding='utf-8')
+
+toml_path = Path("config.toml")
+with open(toml_path, "rb") as f:
+    config = tomllib.load(f)
+WHISPER_MODEL = config["models"]["whisper_model"]
+OLLAMA_MODEL = config["models"]["ollama_model"]
+TTS_MODEL_NAME = config["models"]["tts_model"]
 
 def main():
     # Load models
-    whisper_model = load_whisper_model()
-    tts_model = load_tts_model()
+    whisper_model = load_whisper_model(WHISPER_MODEL)
+    tts_model = load_tts_model(TTS_MODEL_NAME)
 
     print("🟢 English speaking practice started. Press Ctrl+C to stop.")
 
@@ -38,7 +48,7 @@ def main():
                 continue
 
             # Get natural feedback from Ollama
-            feedback = ollama_feedback(transcript)
+            feedback = ollama_feedback(transcript, OLLAMA_MODEL)
 
             # Convert feedback to speech and play it
             tts_speak(feedback, tts_model)

@@ -10,10 +10,10 @@ import simpleaudio as sa
 import os
 import time
 
-TTS_MODEL_NAME = "tts_models/en/ljspeech/tacotron2-DDC"
+
 TTS_OUTPUT_FILE = "feedback.wav"
 
-def load_tts_model(model_name=TTS_MODEL_NAME):
+def load_tts_model(model_name):
     """
     Load TTS model (prefer GPU if available)
     Args:

@@ -8,9 +8,7 @@ from pathlib import Path
 from faster_whisper import WhisperModel
 import torch
 
-WHISPER_MODEL = "medium.en"
-
-def load_whisper_model(model_name=WHISPER_MODEL):
+def load_whisper_model(model_name):
     """
     Load Whisper model with GPU if available
     Args:

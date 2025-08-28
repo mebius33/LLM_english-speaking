@@ -1,0 +1,9 @@
+[models]
+# Whisper transcription model
+whisper_model = "medium.en"
+
+# Ollama model
+ollama_model = "mistral"
+
+# Coqui TTS model
+tts_model = "tts_models/en/ljspeech/tacotron2-DDC"

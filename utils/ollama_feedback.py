@@ -5,9 +5,7 @@ Ollama utilities:
 
 import ollama
 
-OLLAMA_MODEL = "mistral"
-
-def ollama_feedback(transcript, model_name=OLLAMA_MODEL):
+def ollama_feedback(transcript, model_name):
     """
     Get natural, conversational feedback for spoken English from Ollama.
     Args:
